@@ -1,6 +1,7 @@
 package com.healthcare.healtcare.service;
 
 import com.healthcare.healtcare.dao.PatientDao;
+import com.healthcare.healtcare.model.Employee;
 import com.healthcare.healtcare.model.Patient;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,14 @@ public class PatientServiceImpl  implements PatientService{
         this.patientDao = patientDao;
     }
     @Override
-    public List<Patient> getTestRequest() {
+    public List<Patient> getPatientRequest() {
         return patientDao.findByreport("pending");
+    }
+
+    @Override
+    public Patient addPatient(Patient patient) {
+        patientDao.save(patient);
+        return patient;
     }
 
     @Override
